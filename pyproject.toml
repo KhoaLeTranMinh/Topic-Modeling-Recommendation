@@ -1,0 +1,32 @@
+[project]
+name = "topic-modeling-recommendation"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "KTheAsianimeBoi", email = "minhkhoahc2002@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+pypdf = "*"
+tiktoken = "*"
+langchain = "*"
+openai = "*"
+gdown = "*"
+transformers = "*"
+torch = "*"
+pandas = "*"
+numpy = "*"
+nltk = "*"
+gensim = "*"
+ipykernel = "*"
+wordcloud = "*"
+matplotlib = "*"
+pyLDAvis = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

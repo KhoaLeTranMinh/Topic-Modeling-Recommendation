@@ -1,0 +1,15 @@
+pypdf
+tiktoken
+langchain
+openai
+gdown
+transformers
+torch
+pandas
+numpy
+nltk
+gensim
+ipykernel
+wordcloud
+matplotlib
+pyLDAvis

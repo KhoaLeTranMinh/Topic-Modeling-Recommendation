@@ -13,3 +13,5 @@ ipykernel
 wordcloud
 matplotlib
 pyLDAvis
+lyricsgenius
+python-dotenv

@@ -26,6 +26,8 @@ ipykernel = "*"
 wordcloud = "*"
 matplotlib = "*"
 pyLDAvis = "*"
+lyricsgenius = "*"
+python-dotenv = "*"
 
 [build-system]
 requires = ["poetry-core"]

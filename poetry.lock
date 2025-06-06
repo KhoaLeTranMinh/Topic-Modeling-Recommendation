@@ -1749,6 +1749,49 @@ otel = ["opentelemetry-api (>=1.30.0,<2.0.0)", "opentelemetry-exporter-otlp-prot
 pytest = ["pytest (>=7.0.0)", "rich (>=13.9.4,<14.0.0)"]
 
 [[package]]
+name = "lyricsgenius"
+version = "3.3.1"
+description = "Download lyrics and metadata from Genius.com"
+optional = false
+python-versions = "*"
+groups = ["main"]
+markers = "python_version < \"3.11\""
+files = [
+    {file = "lyricsgenius-3.3.1-py3-none-any.whl", hash = "sha256:630018006503a980ef39ca94dad1c40fd0419284c37fca769c00b132e3a9e325"},
+    {file = "lyricsgenius-3.3.1.tar.gz", hash = "sha256:0d68c3d5ad6654ab96247f00c20ed51cc4b5a0dcd690a3c2ae7c92d933f823e4"},
+]
+
+[package.dependencies]
+beautifulsoup4 = ">=4.6.0"
+requests = ">=2.20.0"
+
+[package.extras]
+checks = ["doc8", "flake8", "flake8-bugbear", "pygments", "tox"]
+dev = ["doc8", "flake8", "flake8-bugbear", "pygments", "sphinx", "sphinx-rtd-theme", "tox"]
+docs = ["sphinx", "sphinx-rtd-theme"]
+
+[[package]]
+name = "lyricsgenius"
+version = "3.6.4"
+description = "Download lyrics and metadata from Genius.com"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+markers = "python_version >= \"3.11\""
+files = [
+    {file = "lyricsgenius-3.6.4-py3-none-any.whl", hash = "sha256:7629148a8ff679c3d32e48f6a2baec65ec8b15ff18ecfe5410f733d5063ecc30"},
+    {file = "lyricsgenius-3.6.4.tar.gz", hash = "sha256:5a17da12ea981a8e96427c6f6802a7eb13422e2c43a97c464f2fc53ad827feba"},
+]
+
+[package.dependencies]
+beautifulsoup4 = ">=4.12.3"
+requests = ">=2.27.1"
+
+[package.extras]
+checks = ["doc8 (>=0.11.2)", "flake8 (>=4.0.1)", "flake8-bugbear (>=22.9.23)", "pygments (>=2.14.0)", "tox (>=3.28.0)"]
+docs = ["sphinx (>=4.3.2)", "sphinx-rtd-theme (>=1.3.0)"]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.2"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -3017,6 +3060,21 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[[package]]
+name = "python-dotenv"
+version = "1.1.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "python_dotenv-1.1.0-py3-none-any.whl", hash = "sha256:d7c01d9e2293916c18baf562d95698754b0dbbb5e74d457c45d4f6561fb9d55d"},
+    {file = "python_dotenv-1.1.0.tar.gz", hash = "sha256:41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
 
 [[package]]
 name = "pytz"
@@ -4449,4 +4507,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9"
-content-hash = "6df4ba7d5e76a20abf4fe8601659ba1d2f9d46935b44b937bcd37e6b0dfe6d36"
+content-hash = "d64aae834ff80352370c5579e02554cef12a1dff7413a006927d6d9671e6ef28"

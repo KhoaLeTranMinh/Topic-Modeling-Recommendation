@@ -1,0 +1,36 @@
+[project]
+name = "topic-modeling-recommendation"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "python-dotenv",
+    "langchain",
+    "langchain-community",
+    "langchain-core",
+    "langchain-openai",
+    "octis",
+    "pypdf",
+    "tiktoken",
+    "openai",
+    "gdown",
+    "transformers",
+    "torch",
+    "pandas",
+    "numpy",
+    "nltk",
+    "gensim",
+    "ipykernel",
+    "wordcloud",
+    "matplotlib",
+    "pyLDAvis",
+    "lyricsgenius",
+    "pywsd",
+    "seaborn",
+    "spacy",
+    "spacy-transformers",
+    "scikit-learn >1.1.0",
+    "scipy",
+    "bertopic",
+]

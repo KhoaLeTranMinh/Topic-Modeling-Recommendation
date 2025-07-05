@@ -1,0 +1,38 @@
+# Environment variables
+.env
+
+# Virtual environments
+.venv311/
+.venv*/
+venv/
+env/
+ENV/
+virtualenv/
+pythonenv*/ 
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Model checkpoints and saved data
+Data/
+Artist_Dataset/
+saved_models/
+*.pkl
+*.h5
+*.pt

@@ -1,0 +1,1 @@
+Run the run.py file to run the recommendation system. Type in the name of the artist and the name of the song to get the recommendations.Note that, for the artist recommendation, if the artist name is not in the dataset, the system will recommend the artist based on the song.

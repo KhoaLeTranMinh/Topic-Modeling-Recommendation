@@ -1,0 +1,55 @@
+# GPU-optimized requirements for Topic Modeling Recommendation System
+
+# Core dependencies (from pyproject.toml)
+pandas
+scikit-learn
+python-dotenv
+pypdf
+openai
+
+# Core ML & NLP
+sentence-transformers
+spacy
+spacy-transformers
+nltk
+pywsd
+
+# Topic Modeling
+contextualized-topic-models
+pyldavis
+gensim>=4.3.0
+
+# LangChain
+langchain-community
+langchain-openai
+
+# Visualization & Notebook
+matplotlib
+seaborn
+wordcloud
+ipykernel
+
+# Other
+lyricsgenius
+
+# GPU-specific dependencies
+# PyTorch with CUDA support (minimal install for NLP/topic modeling)
+# For CUDA 11.8:
+torch>=2.0.0
+# Install with: pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+# For CUDA 12.1:
+# torch>=2.0.0
+# Install with: pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# Optional (only if you need computer vision or audio):
+# torchvision>=0.15.0  # For image processing
+# torchaudio>=2.0.0    # For audio processing
+
+# GPU memory management
+psutil
+gpustat
+
+# Accelerated transformers
+transformers>=4.20.0
+accelerate>=0.20.0

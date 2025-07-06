@@ -3,35 +3,32 @@ name = "topic-modeling-recommendation"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11,<3.13"
+requires-python = ">=3.9,<=3.13"
 dependencies = [
-    "python-dotenv",
-    "langchain",
-    "langchain-community",
-    "langchain-core",
-    "langchain-openai",
-    "octis",
-    "pypdf",
-    "tiktoken",
-    "openai",
-    "gdown",
-    "transformers",
-    "torch",
     "pandas",
-    "numpy",
-    "nltk",
-    "ipykernel",
-    "wordcloud",
-    "matplotlib",
-    "lyricsgenius",
-    "pywsd",
-    "seaborn",
+    "scikit-learn",
+    "python-dotenv",
+    "pypdf",
+    "openai",
+    # Core ML & NLP
+    "sentence-transformers",
     "spacy",
     "spacy-transformers",
-    "scikit-learn",
-    "scipy",
-    "bertopic",
+    "nltk",
+    "pywsd",
+    # Topic Modeling
     "contextualized-topic-models",
-    "sentence-transformers",
     "pyldavis",
+    "gensim>=4.3.0",
+    # LangChain
+    "langchain-community",
+    "langchain-openai",
+    # Visualization & Notebook
+    "matplotlib",
+    "seaborn",
+    "wordcloud",
+    "ipykernel",
+    # Other
+    "lyricsgenius",
+    "psutil>=7.0.0",
 ]

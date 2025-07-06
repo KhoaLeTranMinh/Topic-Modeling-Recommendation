@@ -26,7 +26,7 @@ class LDARecommendationSystem:
 
     def recommend_artists(self, query_artist, strategy='balanced_mmr', top_k=8, lambda_param=0.7):
         """
-        Get artist recommendations using specified strategy
+        Get artist recommendations using spec   ified strategy
         """
         if query_artist not in self.artist_distributions:
             return f"❌ Artist '{query_artist}' not found in database"

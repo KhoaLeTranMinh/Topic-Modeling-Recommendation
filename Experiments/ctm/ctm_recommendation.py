@@ -603,7 +603,7 @@ class CTMRecommendationSystem:
         return "\n".join(output)
 
 
-df = pd.read_csv("Lyrics_extraction\scraped_lyrics_no_metadata.csv")
+df = pd.read_csv("Lyrics_extraction\scraped_lyrics_no_metadata_combined.csv")
 loaded = load_model(model_name=get_latest_model_name())
 ctm_model = loaded["model"]
 artist_topic_distributions = loaded["artist_topic_distributions"]

@@ -2,8 +2,8 @@
 .env
 
 # Virtual environments
-.venv311/
-.venv*/
+# .venv311/
+# .venv*/
 venv/
 env/
 ENV/
@@ -30,9 +30,13 @@ build/
 .idea/
 
 # Model checkpoints and saved data
+Paper/
 Data/
 Artist_Dataset/
 saved_models/
 *.pkl
 *.h5
 *.pt
+
+
+

@@ -3,10 +3,9 @@ name = "topic-modeling-recommendation"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9,<=3.13"
+requires-python = ">=3.10,<=3.13"
 dependencies = [
     "pandas",
-    "scikit-learn",
     "python-dotenv",
     "pypdf",
     "openai",
@@ -34,4 +33,5 @@ dependencies = [
     "umap>=0.1.1",
     "hdbscan>=0.8.40",
     "bertopic>=0.17.3",
+    "datasets>=4.0.0",
 ]

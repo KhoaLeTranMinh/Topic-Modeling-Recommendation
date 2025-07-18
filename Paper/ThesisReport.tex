@@ -5,7 +5,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{booktabs}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage[a4paper, margin=1in]{geometry}
 
 \title{Utilizing Topic Modeling for Music Recommendation}
@@ -16,84 +16,135 @@
 \maketitle
 
 \begin{abstract}
-In the digital age, music streaming services face the challenge of providing personalized recommendations to millions of users while avoiding popularity bias. This thesis explores an alternative approach based on topic modeling of song lyrics. We compare three models—LDA, BERTopic, and Contextualized Topic Models (CTM)—to generate document-topic and artist-topic distributions, and evaluate their performance in terms of coherence, diversity, and recommendation quality. Our pipeline extracts lyrics via the Genius API, preprocesses text, trains topic models, aggregates song-level distributions into artist profiles, and uses cosine similarity with Maximal Marginal Relevance (MMR) for generating diverse recommendations. Experimental results demonstrate that CTM outperforms other models in both topic coherence and diversity, leading to more balanced and novel music suggestions. We conclude with discussion on integrating audio features and future improvements such as user studies and web interface deployment.
+    Recommendtion systems have been rising in many aspects of our daily lives as a means to filter and suggest contents for the customers based on their preferences, which help significanlty in easing the load of information overload for the customers and increasing the engagement and retention of the customers. \cite{jannach2013tutorial} In music streaming platforms like Spotify and Apple Music, personalized suggestions help users discover new tracks, increasing engagement and retention. However, popular algorithms often rely on collaborative filtering and audio metadata, which can amplify popularity bias, leading to homogeneous recommendations dominated by mainstream artists.
 \end{abstract}
 
 \section{Introduction}
-Recommendation systems are integral to modern digital services, reducing information overload by filtering content based on user preferences \citep{adomavicius2005toward}. In music streaming platforms like Spotify and Apple Music, personalized suggestions help users discover new tracks, increasing engagement and retention\citep{celma2010music}. However, popular algorithms often rely on collaborative filtering and audio metadata, which can amplify popularity bias, leading to homogeneous recommendations dominated by mainstream artists \citep{abdollahpouri2019unfairness}.
+Recommendation systems are integral to modern digital services, reducing
+information overload by filtering content based on user preferences
+\cite{adomavicius2005toward}. In music streaming platforms like Spotify and
+Apple Music, personalized suggestions help users discover new tracks,
+increasing engagement and retention\cite{celma2010music}. However, popular
+algorithms often rely on collaborative filtering and audio metadata, which can
+amplify popularity bias, leading to homogeneous recommendations dominated by
+mainstream artists \cite{abdollahpouri2019unfairness}.
 
-Lyrics-based recommendation offers a complementary signal, focusing on thematic content rather than popularity. Unlike audio features or metadata, topic modeling of lyrics captures semantic patterns that reflect an artist's style and themes. This approach reduces dependence on external metadata and mitigates the tendency to over-favor popular artists. Our work investigates the efficacy of topic modeling for music recommendation, comparing classical and neural methods to deliver diverse, coherent suggestions.
+Lyrics-based recommendation offers a complementary signal, focusing on thematic
+content rather than popularity. Unlike audio features or metadata, topic
+modeling of lyrics captures semantic patterns that reflect an artist's style
+and themes. This approach reduces dependence on external metadata and mitigates
+the tendency to over-favor popular artists. Our work investigates the efficacy
+of topic modeling for music recommendation, comparing classical and neural
+methods to deliver diverse, coherent suggestions.
 
 \section{Background}
 \subsection{Recommendation Systems}
-Recommendation systems can be categorized into content-based, collaborative filtering, and hybrid approaches \citep{adomavicius2005toward}. Content-based methods analyze item attributes, while collaborative filtering leverages user-item interaction matrices. Hybrid models combine both to balance novelty and accuracy.
+Recommendation systems can be categorized into content-based, collaborative
+filtering, and hybrid approaches \cite{adomavicius2005toward}. Content-based
+methods analyze item attributes, while collaborative filtering leverages
+user-item interaction matrices. Hybrid models combine both to balance novelty
+and accuracy.
 
 \subsection{Music Recommendation}
-In music services, collaborative filtering is widely used due to abundant listening data, but suffers from cold-start and popularity bias issues \citep{celma2010music, abdollahpouri2019unfairness}. Content-based systems using audio features (e.g., timbre, rhythm, pitch) and metadata (e.g., genre, artist popularity) offer alternative signals but still favor common patterns found in popular tracks.
+In music services, collaborative filtering is widely used due to abundant
+listening data, but suffers from cold-start and popularity bias issues
+\cite{celma2010music, abdollahpouri2019unfairness}. Content-based systems using
+audio features (e.g., timbre, rhythm, pitch) and metadata (e.g., genre, artist
+popularity) offer alternative signals but still favor common patterns found in
+popular tracks.
 
 \subsection{Popularity Bias}
-Popularity bias describes the phenomenon where popular items become more promoted, reducing exposure for niche content \citep{chen2020investigating}. In automatic playlists on Spotify, users often get looped into a narrow set of top-chart songs, limiting music discovery.
+Popularity bias describes the phenomenon where popular items become more
+promoted, reducing exposure for niche content \cite{chen2020investigating}. In
+automatic playlists on Spotify, users often get looped into a narrow set of
+top-chart songs, limiting music discovery.
 
 \subsection{Lyrics-based Recommendation}
-Lyrics capture thematic nuances of songs, from emotions to storytelling. Topic modeling can uncover latent themes across a corpus of lyrics, enabling recommendations based on semantic similarity rather than play counts or collaborative signals.
+Lyrics capture thematic nuances of songs, from emotions to storytelling. Topic
+modeling can uncover latent themes across a corpus of lyrics, enabling
+recommendations based on semantic similarity rather than play counts or
+collaborative signals.
 
 \section{Topic Modeling}
 \subsection{Latent Dirichlet Allocation (LDA)}
-LDA \citep{blei2003latent} is a generative probabilistic model that represents each document as a mixture of topics, with each topic being a distribution over words. It employs Dirichlet priors for document-topic and topic-word distributions, allowing unsupervised discovery of thematic structures.
+LDA \cite{blei2003latent} is a generative probabilistic model that represents
+each document as a mixture of topics, with each topic being a distribution over
+words. It employs Dirichlet priors for document-topic and topic-word
+distributions, allowing unsupervised discovery of thematic structures.
 
 \subsection{BERTopic}
-BERTopic \citep{grootendorst2022bertopic} integrates transformer embeddings with clustering algorithms (e.g., HDBSCAN) and class-based TF-IDF to generate interpretable topics. It assumes each document belongs to a single cluster, limiting its ability to model multi-topic documents.
+BERTopic \cite{grootendorst2022bertopic} integrates transformer embeddings with
+clustering algorithms (e.g., HDBSCAN) and class-based TF-IDF to generate
+interpretable topics. It assumes each document belongs to a single cluster,
+limiting its ability to model multi-topic documents.
 
 \subsection{Contextualized Topic Models (CTM)}
-CTM \citep{charnois2021contextualized} extends classical topic models by incorporating contextual embeddings into the inference process. Using variational autoencoders, CTM captures both global topical distributions and local semantic contexts, improving coherence and diversity. ProdLDA \citep{srivastava2017autoencoding} serves as a precursor by applying neural variational inference to topic modeling.
+CTM \cite{bianchi2021cross} extends classical topic models by incorporating
+contextual embeddings into the inference process. Using variational
+autoencoders, CTM captures both global topical distributions and local semantic
+contexts, improving coherence and diversity. ProdLDA
+\cite{srivastava2017autoencoding} serves as a precursor by applying neural
+variational inference to topic modeling.
 
 \section{Methodology}
 \subsection{Dataset Construction}
-We assembled a corpus of 600 US-UK artists by querying ChatGPT and verified via the Genius API. For each artist, we extracted the top 10 songs' lyrics, resulting in 6,000 documents.
+We assembled a corpus of 600 US-UK artists by querying ChatGPT and verified via
+the Genius API. For each artist, we extracted the top 10 songs' lyrics,
+resulting in 6,000 documents.
 
 \subsection{Lyrics Extraction}
-Using the Genius API, we fetched raw lyric texts. Non-English songs were filtered out during preprocessing. Metadata such as song title and artist name were retained for aggregation.
+Using the Genius API, we fetched raw lyric texts. Non-English songs were
+filtered out during preprocessing. Metadata such as song title and artist name
+were retained for aggregation.
 
 \subsection{Preprocessing}
-Lyrics were cleaned by removing punctuation, lowercasing, and tokenizing. Stop words and infrequent tokens (\texttt{min\_df}=5) were removed. Lemmatization was applied using part-of-speech tagging to improve normalization.
+Lyrics were cleaned by removing punctuation, lowercasing, and tokenizing. Stop
+words and infrequent tokens (\texttt{min\_df}=5) were removed. Lemmatization
+was applied using part-of-speech tagging to improve normalization.
 
 \subsection{Model Training}
-We trained LDA (\texttt{gensim}), BERTopic, and CTM (via \texttt{OCTIS}) with $K=10$ topics. Hyperparameters were tuned on a held-out validation set.
+We trained LDA (\texttt{gensim}), BERTopic, and CTM (via \texttt{OCTIS}) with
+$K=10$ topics. Hyperparameters were tuned on a held-out validation set.
 
 \subsection{Artist-level Aggregation}
-Document-topic distributions ($\theta_d$) were averaged per artist to form artist-topic profiles ($\Theta_a = \frac{1}{|D_a|} \sum_{d\in D_a} \theta_d$), reflecting an artist's thematic signature.
+Document-topic distributions ($\theta_d$) were averaged per artist to form
+artist-topic profiles ($\Theta_a = \frac{1}{|D_a|} \sum_{d\in D_a} \theta_d$),
+reflecting an artist's thematic signature.
 
 \subsection{Recommendation Generation}
-Given a query artist or song, we computed cosine similarity between profiles. For diversified recommendations, we applied Maximal Marginal Relevance (MMR) \citep{carbonell1998mmr} to re-rank candidates, balancing relevance and novelty.
+Given a query artist or song, we computed cosine similarity between profiles.
+For diversified recommendations, we applied Maximal Marginal Relevance (MMR)
+\cite{carbonell1998mmr} to re-rank candidates, balancing relevance and novelty.
 
 \section{Evaluation}
 \subsection{Topic Coherence and Diversity}
-We measured coherence (UMass) and topic diversity \citep{dieng2020evaluating}. CTM achieved an average coherence of 0.45 and diversity of 0.72, outperforming LDA (0.31, 0.58) and BERTopic (0.22, 0.49).
+We measured coherence (UMass) and topic diversity \cite{dieng2020evaluating}.
 
 \subsection{Recommendation Quality}
-Quantitative evaluation used intralist similarity reduction via MMR and qualitative inspection of top recommendations. CTM-based suggestions showed thematic relevance and diversity, avoiding repetitive mainstream artists.
+Quantitative evaluation used intralist similarity reduction via MMR and
+qualitative inspection of top recommendations. CTM-based suggestions showed
+thematic relevance and diversity, avoiding repetitive mainstream artists.
 
 \section{Results}
-Across 100 random artist queries, CTM recommendations had 30\% lower similarity to top-10 popular lists compared to LDA, indicating reduced popularity bias. BERTopic often collapsed into 2 topics (English vs non-English) without fine-tuning, limiting its utility.
+Across 100 random artist queries, CTM recommendations had 30\% lower similarity
+to top-10 popular lists compared to LDA, indicating reduced popularity bias.
+BERTopic often collapsed into 2 topics (English vs non-English) without
+fine-tuning, limiting its utility.
 
 \section{Discussion}
-Our findings demonstrate that contextualized topic models effectively capture lyrical themes, producing coherent and diverse artist recommendations. Limitations include lack of user feedback, reliance on lyric availability, and exclusion of audio features.
+Our findings demonstrate that contextualized topic models effectively capture
+lyrical themes, producing coherent and diverse artist recommendations.
+Limitations include lack of user feedback, reliance on lyric availability, and
+exclusion of audio features.
 
 \section{Conclusion and Future Work}
-We presented a lyrics-based music recommendation pipeline leveraging topic modeling. Future directions include user studies for subjective evaluation, web interface deployment, and integration of audio embeddings for hybrid recommendations.
+We presented a lyrics-based music recommendation pipeline leveraging topic
+modeling. Future directions include user studies for subjective evaluation, web
+interface deployment, and integration of audio embeddings for hybrid
+recommendations.
 
-\bibliographystyle{plainnat}
-\begin{thebibliography}{99}
-\bibitem[Adomavicius and Tuzhilin(2005)]{adomavicius2005toward} Gediminas Adomavicius and Alexander Tuzhilin. Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions. \textit{IEEE Transactions on Knowledge and Data Engineering}, 2005.
-\bibitem[Blei et al.(2003)]{blei2003latent} David M. Blei, Andrew Y. Ng, and Michael I. Jordan. Latent Dirichlet Allocation. \textit{Journal of Machine Learning Research}, 2003.
-\bibitem[Celma(2010)]{celma2010music} Òscar Celma. \textit{Music recommendation and discovery in the long tail}. Springer, 2010.
-\bibitem[Charnois et al.(2021)]{charnois2021contextualized} Nicolas G. Charnois, Leila Arribas, and Konstantin A. Sergeev. Contextualized Topic Models for multilingual document collections. \textit{arXiv preprint arXiv:2108.01542}, 2021.
-\bibitem[Carbonell and Goldstein(1998)]{carbonell1998mmr} Jaime Carbonell and Jade Goldstein. The use of MMR, diversity-based reranking for reordering documents and producing summaries. \textit{SIGIR}, 1998.
-\bibitem[Dieng et al.(2020)]{dieng2020evaluating} Adji B. Dieng, Francisco J. R. Ruiz, and David M. Blei. The dynamic topic model. \textit{Journal of Machine Learning Research}, 2020.
-\bibitem[Srivastava and Sutton(2017)]{srivastava2017autoencoding} Akash Srivastava and Charles Sutton. Autoencoding Variational Inference For Topic Models. \textit{ICML}, 2017.
-\bibitem[Grootendorst(2022)]{grootendorst2022bertopic} Maarten Grootendorst. BERTopic: Neural topic modeling with a class-based TF-IDF procedure. \textit{arXiv preprint arXiv:2203.05794}, 2022.
-\bibitem[Abdollahpouri et al.(2019)]{abdollahpouri2019unfairness} Hamed Abdollahpouri, Robin Burke, and Bamshad Mobasher. Unfairness in recommender systems: Active learning strategies for mitigating popular item bias. \textit{RecSys}, 2019.
-\bibitem[Chen et al.(2020)]{chen2020investigating} Lingqiao Chen, Yang Tu, and Annie S. King. Investigating popularity bias in recommender systems. \textit{RecSys}, 2020.
-\end{thebibliography}
+% \bibliographystyle{plainnat}
+\bibliographystyle{unsrt}
+\bibliography{references}
 
 \end{document}

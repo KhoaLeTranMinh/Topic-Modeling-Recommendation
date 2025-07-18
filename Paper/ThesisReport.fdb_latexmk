@@ -1,9 +1,17 @@
 # Fdb version 3
-["pdflatex"] 1752682240 "d:/Code/LabResearch/Topic-Modeling-Recommendation/Paper/ThesisReport.tex" "ThesisReport.pdf" "ThesisReport" 1752682242
-  "ThesisReport.aux" 1752682242 4455 25ae091d2064fe0d4cd4077358053038 "pdflatex"
-  "ThesisReport.out" 1752682242 3404 0a7933d85a545bf6a5ffb016fc9ff34c "pdflatex"
-  "ThesisReport.tex" 1752682226 10021 25cf39bf2994795d696850b27c49172b ""
-  "d:/Code/LabResearch/Topic-Modeling-Recommendation/Paper/ThesisReport.tex" 1752682226 10021 25cf39bf2994795d696850b27c49172b ""
+["bibtex ThesisReport"] 1752809005 "ThesisReport.aux" "ThesisReport.bbl" "ThesisReport" 1752809008
+  "ThesisReport.aux" 1752809007 4390 4c08c062a0255d1517fa703e9502d27a "pdflatex"
+  "d:/Other Programs/Latex/texlive/2022/texmf-dist/bibtex/bst/base/unsrt.bst" 1665807205 18030 1376b4b231b50c66211e47e42eda2875 ""
+  "references.bib" 1752808974 6699 1d4ef4525d49458927cf0da819317d8e ""
+  (generated)
+  "ThesisReport.bbl"
+  "ThesisReport.blg"
+["pdflatex"] 1752809006 "d:/Code/LabResearch/Topic-Modeling-Recommendation/Paper/ThesisReport.tex" "ThesisReport.pdf" "ThesisReport" 1752809008
+  "ThesisReport.aux" 1752809007 4390 4c08c062a0255d1517fa703e9502d27a "pdflatex"
+  "ThesisReport.bbl" 1752809006 2720 27d73c2dbf69e8c44da4807783c4028e "bibtex ThesisReport"
+  "ThesisReport.out" 1752809007 3404 0a7933d85a545bf6a5ffb016fc9ff34c "pdflatex"
+  "ThesisReport.tex" 1752808999 7597 75e8e7a06751b47fbbd9323c7f23a813 ""
+  "d:/Code/LabResearch/Topic-Modeling-Recommendation/Paper/ThesisReport.tex" 1752808999 7597 75e8e7a06751b47fbbd9323c7f23a813 ""
   "d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1665808944 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1665806664 1004 54797486969f23fa377b128694d548df ""
   "d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1665806664 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""

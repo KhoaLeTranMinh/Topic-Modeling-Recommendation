@@ -568,6 +568,10 @@ INPUT d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.
 INPUT d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT ./ThesisReport.bbl
+INPUT ThesisReport.bbl
+INPUT ./ThesisReport.bbl
+INPUT ThesisReport.bbl
 INPUT d:/Other Programs/Latex/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT ThesisReport.aux
 INPUT ./ThesisReport.out

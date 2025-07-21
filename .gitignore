@@ -34,6 +34,7 @@ Paper/
 Data/
 Artist_Dataset/
 saved_models/
+Paper/
 *.pkl
 *.h5
 *.pt
